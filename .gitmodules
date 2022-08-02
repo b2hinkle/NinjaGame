@@ -1,0 +1,15 @@
+[submodule "_GameProjectName_/Plugins/GameCore"]
+	path = _GameProjectName_/Plugins/GameCore
+	url = https://github.com/brian2524/GameCore.git
+[submodule "_GameProjectName_/Plugins/AbilitySystemSetup"]
+	path = _GameProjectName_/Plugins/AbilitySystemSetup
+	url = https://github.com/ChristianHinko/AbilitySystemSetup.git
+[submodule "_GameProjectName_/Plugins/AbilitySystemSetupExtras"]
+	path = _GameProjectName_/Plugins/AbilitySystemSetupExtras
+	url = https://github.com/brian2524/AbilitySystemSetupExtras.git
+[submodule "_GameProjectName_/Plugins/InputSetup"]
+	path = _GameProjectName_/Plugins/InputSetup
+	url = https://github.com/ChristianHinko/InputSetup.git
+[submodule "_GameProjectName_/Plugins/GameSetup"]
+	path = _GameProjectName_/Plugins/GameSetup
+	url = https://github.com/ChristianHinko/GameSetup.git
