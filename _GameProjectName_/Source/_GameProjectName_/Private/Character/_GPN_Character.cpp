@@ -5,6 +5,7 @@
 
 #include "Subobjects/ActorComponents/GSActorComponent_PawnExtension.h"
 #include "ActorComponents/ISActorComponent_PawnExtension.h"
+#include "ActorComponents/ASActorComponent_PartAttacher.h"
 
 
 
@@ -13,8 +14,16 @@ A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
 {
 	GSPawnExtensionComponent = CreateDefaultSubobject<UGSActorComponent_PawnExtension>(TEXT("GSPawnExtensionComponent"));
 	ISPawnExtensionComponent = CreateDefaultSubobject<UISActorComponent_PawnExtension>(TEXT("ISPawnExtensionComponent"));
+	PartAttacherComponent = CreateDefaultSubobject<UASActorComponent_PartAttacher>(TEXT("PartAttacherComponent"));
 }
 
+
+void A_GPN_Character::PostRegisterAllComponents()
+{
+	Super::PostRegisterAllComponents();
+
+	PartAttacherComponent->InitializeWithMeshComponent(GetMesh());
+}
 
 void A_GPN_Character::PawnClientRestart()
 {

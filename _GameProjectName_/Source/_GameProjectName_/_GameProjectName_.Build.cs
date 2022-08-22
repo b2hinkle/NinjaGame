@@ -19,7 +19,8 @@ public class _GameProjectName_ : ModuleRules
 				"AbilitySystemSetup",
 				"AbilitySystemSetupExtras",
 				"EnhancedInput",
-				"InputSetup"
+				"InputSetup",
+				"AnimationSetup"
 			}
 		);
 	}

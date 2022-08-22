@@ -10,6 +10,7 @@
 
 class UGSActorComponent_PawnExtension;
 class UISActorComponent_PawnExtension;
+class UASActorComponent_PartAttacher;
 class UInputComponent;
 
 
@@ -28,14 +29,20 @@ protected:
 		TObjectPtr<UGSActorComponent_PawnExtension> GSPawnExtensionComponent;
 	UPROPERTY(VisibleAnywhere, Category = "InputSetup")
 		TObjectPtr<UISActorComponent_PawnExtension> ISPawnExtensionComponent;
+	UPROPERTY(VisibleAnywhere, Category = "AnimationSetup")
+		TObjectPtr<UASActorComponent_PartAttacher> PartAttacherComponent;
 
 public:
 	A_GPN_Character(const FObjectInitializer& ObjectInitializer);
 
+
 protected:
+	//  BEGIN AActor interface
+	virtual void PostRegisterAllComponents() override;
+	//  END AActor interface
+
 	//  BEGIN APawn interface
 	virtual void PawnClientRestart() override;
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 	//  END APawn interface
-
 };

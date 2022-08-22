@@ -13,3 +13,6 @@
 [submodule "_GameProjectName_/Plugins/GameSetup"]
 	path = _GameProjectName_/Plugins/GameSetup
 	url = https://github.com/ChristianHinko/GameSetup.git
+[submodule "_GameProjectName_/Plugins/AnimationSetup"]
+	path = _GameProjectName_/Plugins/AnimationSetup
+	url = https://github.com/ChristianHinko/AnimationSetup.git
