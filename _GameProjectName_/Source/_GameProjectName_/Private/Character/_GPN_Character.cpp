@@ -6,6 +6,7 @@
 #include "Subobjects/ActorComponents/GSActorComponent_PawnExtension.h"
 #include "ActorComponents/ISActorComponent_PawnExtension.h"
 #include "ActorComponents/ASActorComponent_PartAttacher.h"
+#include "Mesh/ASBlueprintFunctionLibrary_SkeletalMeshHelpers.h"
 
 
 
@@ -15,6 +16,8 @@ A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
 	GSPawnExtensionComponent = CreateDefaultSubobject<UGSActorComponent_PawnExtension>(TEXT("GSPawnExtensionComponent"));
 	ISPawnExtensionComponent = CreateDefaultSubobject<UISActorComponent_PawnExtension>(TEXT("ISPawnExtensionComponent"));
 	PartAttacherComponent = CreateDefaultSubobject<UASActorComponent_PartAttacher>(TEXT("PartAttacherComponent"));
+
+	UASBlueprintFunctionLibrary_SkeletalMeshHelpers::SetupDefaultMeshTransform(GetMesh(), GetCapsuleComponent());
 }
 
 
