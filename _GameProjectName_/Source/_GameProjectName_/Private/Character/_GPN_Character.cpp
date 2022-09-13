@@ -5,8 +5,8 @@
 
 #include "Subobjects/ActorComponents/GSActorComponent_PawnExtension.h"
 #include "ActorComponents/ISActorComponent_PawnExtension.h"
-#include "ActorComponents/ASActorComponent_PartAttacher.h"
-#include "Mesh/ASBlueprintFunctionLibrary_SkeletalMeshHelpers.h"
+#include "ActorComponents/ASActorComponent_SkeletalPartAttacher.h"
+#include "BlueprintFunctionLibraries/ASBlueprintFunctionLibrary_SkeletalMeshComponentHelpers.h"
 
 
 
@@ -15,9 +15,9 @@ A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
 {
 	GSPawnExtensionComponent = CreateDefaultSubobject<UGSActorComponent_PawnExtension>(TEXT("GSPawnExtensionComponent"));
 	ISPawnExtensionComponent = CreateDefaultSubobject<UISActorComponent_PawnExtension>(TEXT("ISPawnExtensionComponent"));
-	PartAttacherComponent = CreateDefaultSubobject<UASActorComponent_PartAttacher>(TEXT("PartAttacherComponent"));
+	SkeletalPartAttacherComponent = CreateDefaultSubobject<UASActorComponent_SkeletalPartAttacher>(TEXT("SkeletalPartAttacherComponent"));
 
-	UASBlueprintFunctionLibrary_SkeletalMeshHelpers::SetupDefaultMeshTransform(GetMesh(), GetCapsuleComponent());
+	UASBlueprintFunctionLibrary_SkeletalMeshComponentHelpers::ConfigureDefaultSkeletalMeshComponentTransform(GetMesh(), GetCapsuleComponent());
 }
 
 
@@ -25,7 +25,7 @@ void A_GPN_Character::PostRegisterAllComponents()
 {
 	Super::PostRegisterAllComponents();
 
-	PartAttacherComponent->InitializeWithMeshComponent(GetMesh());
+	SkeletalPartAttacherComponent->InitializeWithSkinnedMeshComponent(GetMesh());
 }
 
 void A_GPN_Character::PawnClientRestart()

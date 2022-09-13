@@ -10,7 +10,7 @@
 
 class UGSActorComponent_PawnExtension;
 class UISActorComponent_PawnExtension;
-class UASActorComponent_PartAttacher;
+class UASActorComponent_SkeletalPartAttacher;
 class UInputComponent;
 
 
@@ -30,7 +30,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "InputSetup")
 		TObjectPtr<UISActorComponent_PawnExtension> ISPawnExtensionComponent;
 	UPROPERTY(VisibleAnywhere, Category = "AnimationSetup")
-		TObjectPtr<UASActorComponent_PartAttacher> PartAttacherComponent;
+		TObjectPtr<UASActorComponent_SkeletalPartAttacher> SkeletalPartAttacherComponent;
 
 public:
 	A_GPN_Character(const FObjectInitializer& ObjectInitializer);
