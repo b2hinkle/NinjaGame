@@ -14,18 +14,20 @@ A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
 	GSPawnExtensionComponent = CreateDefaultSubobject<UGSActorComponent_PawnExtension>(TEXT("GSPawnExtensionComponent"));
+
 	ISPawnExtensionComponent = CreateDefaultSubobject<UISActorComponent_PawnExtension>(TEXT("ISPawnExtensionComponent"));
+
 	SkeletalPartAttacherComponent = CreateDefaultSubobject<UASActorComponent_SkeletalPartAttacher>(TEXT("SkeletalPartAttacherComponent"));
+	SkeletalPartAttacherComponent->UseSkeletalMeshComponent(GetMesh());
 
 	UASBlueprintFunctionLibrary_SkeletalMeshComponentHelpers::ConfigureDefaultSkeletalMeshComponentTransform(GetMesh(), GetCapsuleComponent());
 }
-
 
 void A_GPN_Character::PostRegisterAllComponents()
 {
 	Super::PostRegisterAllComponents();
 
-	SkeletalPartAttacherComponent->InitializeWithSkinnedMeshComponent(GetMesh());
+	SkeletalPartAttacherComponent->SpawnSkeletalPartActors();
 }
 
 void A_GPN_Character::PawnClientRestart()
