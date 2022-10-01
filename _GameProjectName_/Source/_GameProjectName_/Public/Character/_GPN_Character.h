@@ -12,6 +12,7 @@ class UGSActorComponent_PawnExtension;
 class UISActorComponent_PawnExtension;
 class UASActorComponent_SkeletalPartAttacher;
 class UInputComponent;
+class UPSActorComponent_PawnExtension;
 
 
 
@@ -29,6 +30,8 @@ protected:
 		TObjectPtr<UGSActorComponent_PawnExtension> GSPawnExtensionComponent;
 	UPROPERTY(VisibleAnywhere, Category = "InputSetup")
 		TObjectPtr<UISActorComponent_PawnExtension> ISPawnExtensionComponent;
+	UPROPERTY(VisibleAnywhere, Category = "PawnSetup")
+		TObjectPtr<UPSActorComponent_PawnExtension> PSPawnExtensionComponent;
 	UPROPERTY(VisibleAnywhere, Category = "AnimationSetup")
 		TObjectPtr<UASActorComponent_SkeletalPartAttacher> SkeletalPartAttacherComponent;
 

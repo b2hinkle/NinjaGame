@@ -7,6 +7,7 @@
 #include "ActorComponents/ISActorComponent_PawnExtension.h"
 #include "ActorComponents/ASActorComponent_SkeletalPartAttacher.h"
 #include "BlueprintFunctionLibraries/ASBlueprintFunctionLibrary_SkeletalMeshComponentHelpers.h"
+#include "ActorComponents/PSActorComponent_PawnExtension.h"
 
 
 
@@ -14,8 +15,8 @@ A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
 	GSPawnExtensionComponent = CreateDefaultSubobject<UGSActorComponent_PawnExtension>(TEXT("GSPawnExtensionComponent"));
-
 	ISPawnExtensionComponent = CreateDefaultSubobject<UISActorComponent_PawnExtension>(TEXT("ISPawnExtensionComponent"));
+	PSPawnExtensionComponent = CreateDefaultSubobject<UPSActorComponent_PawnExtension>(TEXT("PSPawnExtensionComponent"));
 
 	SkeletalPartAttacherComponent = CreateDefaultSubobject<UASActorComponent_SkeletalPartAttacher>(TEXT("SkeletalPartAttacherComponent"));
 	SkeletalPartAttacherComponent->UseSkeletalMeshComponent(GetMesh());
@@ -42,4 +43,5 @@ void A_GPN_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	ISPawnExtensionComponent->SetupPlayerInputComponent(PlayerInputComponent);
+	PSPawnExtensionComponent->OnOwnerSetupPlayerInputComponent(PlayerInputComponent);
 }

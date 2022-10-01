@@ -20,7 +20,8 @@ public class _GameProjectName_ : ModuleRules
 				"AbilitySystemSetupExtras",
 				"EnhancedInput",
 				"InputSetup",
-				"AnimationSetup"
+				"AnimationSetup",
+				"PawnSetup"
 			}
 		);
 	}
