@@ -35,13 +35,13 @@ void A_GPN_Character::PawnClientRestart()
 {
 	Super::PawnClientRestart();
 
-	ISPawnExtensionComponent->PawnClientRestart();
+	ISPawnExtensionComponent->OnOwnerPawnClientRestart();
 }
 
 void A_GPN_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	ISPawnExtensionComponent->SetupPlayerInputComponent(PlayerInputComponent);
+	ISPawnExtensionComponent->OnOwnerSetupPlayerInputComponent(PlayerInputComponent);
 	PSPawnExtensionComponent->OnOwnerSetupPlayerInputComponent(PlayerInputComponent);
 }
