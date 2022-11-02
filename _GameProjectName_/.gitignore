@@ -1,6 +1,9 @@
 # Visual Studio debugging sometimes makes this folder
 enc_temp_folder/*
 
+# Visual Studio IntelliSense PCH files
+*.ipch
+
 
 # Visual Studio 2015 user specific files
 .vs/
