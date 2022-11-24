@@ -1,9 +1,11 @@
-# Visual Studio debugging sometimes makes this folder
+# Visual Studio
+.vsconfig
+# This is sometimes made when debugging
 enc_temp_folder/*
-
-# Visual Studio IntelliSense PCH files
+# These sometimes appear from IntelliSense
 *.ipch
 
+##############################################################################
 
 # Visual Studio 2015 user specific files
 .vs/
