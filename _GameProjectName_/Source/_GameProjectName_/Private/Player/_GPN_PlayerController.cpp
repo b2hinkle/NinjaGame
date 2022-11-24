@@ -3,12 +3,14 @@
 
 #include "Player/_GPN_PlayerController.h"
 
+#include "Camera/CSPlayerCameraManager.h"
+
 
 
 A_GPN_PlayerController::A_GPN_PlayerController(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-
+	PlayerCameraManagerClass = ACSPlayerCameraManager::StaticClass();
 }
 
 

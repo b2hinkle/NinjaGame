@@ -9,6 +9,7 @@ public class _GameProjectName_EditorTarget : TargetRules
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
+		IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 		ExtraModuleNames.AddRange(new string[] { "_GameProjectName_" });
 	}
 }

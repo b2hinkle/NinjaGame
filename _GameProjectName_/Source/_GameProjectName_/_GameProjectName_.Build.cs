@@ -21,7 +21,8 @@ public class _GameProjectName_ : ModuleRules
 				"EnhancedInput",
 				"InputSetup",
 				"AnimationSetup",
-				"PawnSetup"
+				"PawnSetup",
+				"CameraSetup"
 			}
 		);
 	}
