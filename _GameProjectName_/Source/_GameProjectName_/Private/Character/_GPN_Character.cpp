@@ -8,6 +8,8 @@
 #include "ActorComponents/ASActorComponent_SkeletalPartAttacher.h"
 #include "BlueprintFunctionLibraries/ASBlueprintFunctionLibrary_SkeletalMeshComponentHelpers.h"
 #include "ActorComponents/PSActorComponent_PawnExtension.h"
+#include "Camera/CameraComponent.h"
+#include "BlueprintFunctionLibraries/CSBlueprintFunctionLibrary_CameraComponentHelpers.h"
 
 
 
@@ -20,8 +22,12 @@ A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
 
 	SkeletalPartAttacherComponent = CreateDefaultSubobject<UASActorComponent_SkeletalPartAttacher>(TEXT("SkeletalPartAttacherComponent"));
 	SkeletalPartAttacherComponent->UseSkeletalMeshComponent(GetMesh());
-
 	UASBlueprintFunctionLibrary_SkeletalMeshComponentHelpers::ConfigureDefaultSkeletalMeshComponentTransform(GetMesh(), GetCapsuleComponent());
+
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
+	CameraComponent->SetupAttachment(GetRootComponent());
+	UCSBlueprintFunctionLibrary_CameraComponentHelpers::ConfigureDefaultCameraComponentTransform(CameraComponent, this);
+	CameraComponent->bUsePawnControlRotation = true;
 }
 
 void A_GPN_Character::PostRegisterAllComponents()
@@ -30,6 +36,7 @@ void A_GPN_Character::PostRegisterAllComponents()
 
 	SkeletalPartAttacherComponent->SpawnSkeletalPartActors();
 }
+
 
 void A_GPN_Character::PawnClientRestart()
 {

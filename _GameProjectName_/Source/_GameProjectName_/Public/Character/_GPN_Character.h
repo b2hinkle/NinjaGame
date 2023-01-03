@@ -13,6 +13,7 @@ class UISActorComponent_PawnExtension;
 class UASActorComponent_SkeletalPartAttacher;
 class UInputComponent;
 class UPSActorComponent_PawnExtension;
+class UCameraComponent;
 
 
 
@@ -34,6 +35,9 @@ protected:
 		TObjectPtr<UPSActorComponent_PawnExtension> PSPawnExtensionComponent;
 	UPROPERTY(VisibleAnywhere, Category = "AnimationSetup")
 		TObjectPtr<UASActorComponent_SkeletalPartAttacher> SkeletalPartAttacherComponent;
+
+	UPROPERTY(VisibleAnywhere, Category = "Camera")
+		TObjectPtr<UCameraComponent> CameraComponent;
 
 public:
 	A_GPN_Character(const FObjectInitializer& ObjectInitializer);
