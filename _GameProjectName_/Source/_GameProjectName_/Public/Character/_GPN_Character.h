@@ -10,7 +10,8 @@
 
 class UGSActorComponent_PawnExtension;
 class UISActorComponent_PawnExtension;
-class UASActorComponent_SkeletalPartAttacher;
+class UASActorComponent_SkinlessSkeletalMesh;
+class UASActorComponent_AttachmentAttacher;
 class UInputComponent;
 class UPSActorComponent_PawnExtension;
 class UCameraComponent;
@@ -34,7 +35,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, Category = "PawnSetup")
 		TObjectPtr<UPSActorComponent_PawnExtension> PSPawnExtensionComponent;
 	UPROPERTY(VisibleAnywhere, Category = "AnimationSetup")
-		TObjectPtr<UASActorComponent_SkeletalPartAttacher> SkeletalPartAttacherComponent;
+		TObjectPtr<UASActorComponent_SkinlessSkeletalMesh> SkinlessSkeletalMeshComponent;
+	UPROPERTY(VisibleAnywhere, Category = "AnimationSetup")
+		TObjectPtr<UASActorComponent_AttachmentAttacher> AttachmentAttacherComponent;
 
 	UPROPERTY(VisibleAnywhere, Category = "Camera")
 		TObjectPtr<UCameraComponent> CameraComponent;
