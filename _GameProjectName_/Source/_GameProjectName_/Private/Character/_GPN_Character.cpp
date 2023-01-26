@@ -29,7 +29,7 @@ A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
 
 	// Set up Skeletal Part Attacher
 	AttachmentAttacherComponent = CreateDefaultSubobject<UASActorComponent_AttachmentAttacher>(TEXT("AttachmentAttacherComponent"));
-	AttachmentAttacherComponent->SetAttachee(GetMesh());
+	AttachmentAttacherComponent->AttacheeReference.ComponentProperty = TEXT("Mesh");
 
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 	CameraComponent->SetupAttachment(GetRootComponent());
