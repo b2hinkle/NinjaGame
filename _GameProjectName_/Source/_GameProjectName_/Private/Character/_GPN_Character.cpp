@@ -25,7 +25,7 @@ A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
 	UASBlueprintFunctionLibrary_SkeletalMeshComponentHelpers::ConfigureDefaultSkeletalMeshComponentTransform(GetMesh(), GetCapsuleComponent());
 
 	SkinlessSkeletalMeshComponent = CreateDefaultSubobject<UASActorComponent_SkinlessSkeletalMesh>(TEXT("SkinlessSkeletalMeshComponent"));
-	SkinlessSkeletalMeshComponent->UseSkeletalMeshComponent(GetMesh());
+	SkinlessSkeletalMeshComponent->SkeletalMeshComponentReference.ComponentProperty = TEXT("Mesh"); // NOTE: can't do GET_MEMBER_NAME_CHECKED() for the private member ACharacter::Mesh
 
 	// Set up Skeletal Part Attacher
 	AttachmentAttacherComponent = CreateDefaultSubobject<UASActorComponent_AttachmentAttacher>(TEXT("AttachmentAttacherComponent"));
