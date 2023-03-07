@@ -5,9 +5,12 @@
 
 #include "Subobjects/ActorComponents/GSActorComponent_PawnExtension.h"
 #include "ActorComponents/ISActorComponent_PawnExtension.h"
-#include "ActorComponents/ASActorComponent_SkeletalPartAttacher.h"
+#include "ActorComponents/ASActorComponent_SkinlessSkeletalMesh.h"
+#include "ActorComponents/ASActorComponent_AttachmentAttacher.h"
 #include "BlueprintFunctionLibraries/ASBlueprintFunctionLibrary_SkeletalMeshComponentHelpers.h"
 #include "ActorComponents/PSActorComponent_PawnExtension.h"
+#include "Camera/CameraComponent.h"
+#include "BlueprintFunctionLibraries/CSBlueprintFunctionLibrary_CameraComponentHelpers.h"
 
 
 
@@ -18,18 +21,29 @@ A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
 	ISPawnExtensionComponent = CreateDefaultSubobject<UISActorComponent_PawnExtension>(TEXT("ISPawnExtensionComponent"));
 	PSPawnExtensionComponent = CreateDefaultSubobject<UPSActorComponent_PawnExtension>(TEXT("PSPawnExtensionComponent"));
 
-	SkeletalPartAttacherComponent = CreateDefaultSubobject<UASActorComponent_SkeletalPartAttacher>(TEXT("SkeletalPartAttacherComponent"));
-	SkeletalPartAttacherComponent->UseSkeletalMeshComponent(GetMesh());
-
+	// Set up Character mesh
 	UASBlueprintFunctionLibrary_SkeletalMeshComponentHelpers::ConfigureDefaultSkeletalMeshComponentTransform(GetMesh(), GetCapsuleComponent());
+
+	SkinlessSkeletalMeshComponent = CreateDefaultSubobject<UASActorComponent_SkinlessSkeletalMesh>(TEXT("SkinlessSkeletalMeshComponent"));
+	SkinlessSkeletalMeshComponent->SkeletalMeshComponentReference.ComponentProperty = TEXT("Mesh"); // NOTE: can't do GET_MEMBER_NAME_CHECKED() for the private member ACharacter::Mesh
+
+	// Set up Skeletal Part Attacher
+	AttachmentAttacherComponent = CreateDefaultSubobject<UASActorComponent_AttachmentAttacher>(TEXT("AttachmentAttacherComponent"));
+	AttachmentAttacherComponent->AttacheeReference.ComponentProperty = TEXT("Mesh");
+
+	CameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
+	CameraComponent->SetupAttachment(GetRootComponent());
+	UCSBlueprintFunctionLibrary_CameraComponentHelpers::ConfigureDefaultCameraComponentTransform(CameraComponent, this);
+	CameraComponent->bUsePawnControlRotation = true;
 }
 
 void A_GPN_Character::PostRegisterAllComponents()
 {
 	Super::PostRegisterAllComponents();
 
-	SkeletalPartAttacherComponent->SpawnSkeletalPartActors();
+	AttachmentAttacherComponent->SpawnAttachments();
 }
+
 
 void A_GPN_Character::PawnClientRestart()
 {
