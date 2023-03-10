@@ -56,6 +56,5 @@ void A_GPN_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	ISPawnExtensionComponent->OnOwnerSetupPlayerInputComponent(PlayerInputComponent);
 	PSPawnExtensionComponent->OnOwnerSetupPlayerInputComponent(PlayerInputComponent);
 }

@@ -15,5 +15,4 @@
  */
 namespace _GPN_NativeGameplayTags
 {
-	_GAMEPROJECTNAME__API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Example_Gameplay_Tag)
 }
