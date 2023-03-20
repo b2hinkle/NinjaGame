@@ -26,7 +26,6 @@ class A_GPN_Character : public AASSCharacter_Example
 {
 	GENERATED_BODY()
 
-
 protected:
 	UPROPERTY(VisibleAnywhere, Category = "GameSetup")
 		TObjectPtr<UGSActorComponent_PawnExtension> GSPawnExtensionComponent;

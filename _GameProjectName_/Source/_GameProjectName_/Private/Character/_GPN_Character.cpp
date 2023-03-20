@@ -11,11 +11,12 @@
 #include "ActorComponents/PSActorComponent_PawnExtension.h"
 #include "Camera/CameraComponent.h"
 #include "BlueprintFunctionLibraries/CSBlueprintFunctionLibrary_CameraComponentHelpers.h"
+#include "ActorComponents/ASSkeletalMeshComponent_Example.h"
 
 
 
 A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer)
+	: Super(ObjectInitializer.SetDefaultSubobjectClass<UASSkeletalMeshComponent_Example>(MeshComponentName))
 {
 	GSPawnExtensionComponent = CreateDefaultSubobject<UGSActorComponent_PawnExtension>(TEXT("GSPawnExtensionComponent"));
 	ISPawnExtensionComponent = CreateDefaultSubobject<UISActorComponent_PawnExtension>(TEXT("ISPawnExtensionComponent"));
