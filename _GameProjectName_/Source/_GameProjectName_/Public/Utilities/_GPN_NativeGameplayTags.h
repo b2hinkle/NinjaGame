@@ -15,4 +15,6 @@
  */
 namespace _GPN_NativeGameplayTags
 {
+	// Portrayals
+	_GAMEPROJECTNAME__API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Portrayal_FirstPerson)
 }
