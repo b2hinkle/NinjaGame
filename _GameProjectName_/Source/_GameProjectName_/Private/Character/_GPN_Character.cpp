@@ -13,7 +13,7 @@
 #include "BlueprintFunctionLibraries/CSBlueprintFunctionLibrary_CameraComponentHelpers.h"
 #include "ActorComponents/ASSkeletalMeshComponent_Example.h"
 #include "ActorComponents/ASActorComponent_PortrayalAssignment.h"
-#include "Portrayals/ASPortrayalDefinition_List.h"
+#include "Portrayals/ASPortrayalDefinition_ViewerList.h"
 
 
 
@@ -54,7 +54,7 @@ void A_GPN_Character::PostRegisterAllComponents()
 		if (IsValid(PortrayalAssignmentComponent))
 		{
 			UASPortrayalDefinition* PortrayalDefinition = PortrayalAssignmentComponent->GetInstancedPortrayalDefinition(_GPN_NativeGameplayTags::Portrayal_FirstPerson);
-			UASPortrayalDefinition_List* FirstPersonPortrayalDefinitionInstance = Cast<UASPortrayalDefinition_List>(PortrayalDefinition);
+			UASPortrayalDefinition_ViewerList* FirstPersonPortrayalDefinitionInstance = Cast<UASPortrayalDefinition_ViewerList>(PortrayalDefinition);
 			if (IsValid(FirstPersonPortrayalDefinitionInstance))
 			{
 				PortrayalAssignmentComponent->UnapplyPortrayals();
