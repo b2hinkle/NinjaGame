@@ -11,14 +11,13 @@
 #include "ActorComponents/PSActorComponent_PawnExtension.h"
 #include "Camera/CameraComponent.h"
 #include "BlueprintFunctionLibraries/CSBlueprintFunctionLibrary_CameraComponentHelpers.h"
-#include "ActorComponents/ASSkeletalMeshComponent_Example.h"
 #include "ActorComponents/ASActorComponent_PortrayalAssignment.h"
 #include "Portrayals/ASPortrayalDefinition_ViewerList.h"
 
 
 
 A_GPN_Character::A_GPN_Character(const FObjectInitializer& ObjectInitializer)
-	: Super(ObjectInitializer.SetDefaultSubobjectClass<UASSkeletalMeshComponent_Example>(MeshComponentName))
+	: Super(ObjectInitializer)
 {
 	GSPawnExtensionComponent = CreateDefaultSubobject<UGSActorComponent_PawnExtension>(TEXT("GSPawnExtensionComponent"));
 	ISPawnExtensionComponent = CreateDefaultSubobject<UISActorComponent_PawnExtension>(TEXT("ISPawnExtensionComponent"));
@@ -46,7 +45,7 @@ void A_GPN_Character::PostRegisterAllComponents()
 
 	AttachmentAttacherComponent->SpawnAttachments();
 
-	// Add us to the first person portrayals' actor lists.
+	// Add us to the first person portrayals' view actor lists.
 	// This is assuming that we are in first person.
 	for (const AActor* Attachment : AttachmentAttacherComponent->GetAttachments())
 	{
