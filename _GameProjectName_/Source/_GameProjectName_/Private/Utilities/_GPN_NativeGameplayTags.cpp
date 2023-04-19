@@ -7,5 +7,6 @@
 
 namespace _GPN_NativeGameplayTags
 {
-	UE_DEFINE_GAMEPLAY_TAG(Example_Gameplay_Tag,											TEXT("Example.Gameplay.Tag"))
+	// Portrayals
+	UE_DEFINE_GAMEPLAY_TAG(Portrayal_FirstPerson, TEXT("Portrayal.FirstPerson"))
 }

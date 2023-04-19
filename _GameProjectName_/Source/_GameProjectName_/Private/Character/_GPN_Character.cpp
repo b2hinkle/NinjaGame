@@ -11,6 +11,8 @@
 #include "ActorComponents/PSActorComponent_PawnExtension.h"
 #include "Camera/CameraComponent.h"
 #include "BlueprintFunctionLibraries/CSBlueprintFunctionLibrary_CameraComponentHelpers.h"
+#include "ActorComponents/ASActorComponent_PortrayalAssignment.h"
+#include "Portrayals/ASPortrayalDefinition_ViewerList.h"
 
 
 
@@ -42,6 +44,29 @@ void A_GPN_Character::PostRegisterAllComponents()
 	Super::PostRegisterAllComponents();
 
 	AttachmentAttacherComponent->SpawnAttachments();
+
+	// Add us to the first person portrayals' view actor lists.
+	// This is assuming that we are in first person.
+	for (const AActor* Attachment : AttachmentAttacherComponent->GetAttachments())
+	{
+		UASActorComponent_PortrayalAssignment* PortrayalAssignmentComponent = Attachment->FindComponentByClass<UASActorComponent_PortrayalAssignment>();
+		if (IsValid(PortrayalAssignmentComponent))
+		{
+			UASPortrayalDefinition* PortrayalDefinition = PortrayalAssignmentComponent->GetInstancedPortrayalDefinition(_GPN_NativeGameplayTags::Portrayal_FirstPerson);
+			UASPortrayalDefinition_ViewerList* FirstPersonPortrayalDefinitionInstance = Cast<UASPortrayalDefinition_ViewerList>(PortrayalDefinition);
+			if (IsValid(FirstPersonPortrayalDefinitionInstance))
+			{
+				PortrayalAssignmentComponent->UnapplyPortrayals();
+
+				if (IsValid(FirstPersonPortrayalDefinitionInstance))
+				{
+					FirstPersonPortrayalDefinitionInstance->ActorList.Add(this);
+				}
+
+				PortrayalAssignmentComponent->ApplyPortrayals();
+			}
+		}
+	}
 }
 
 
@@ -56,6 +81,5 @@ void A_GPN_Character::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-	ISPawnExtensionComponent->OnOwnerSetupPlayerInputComponent(PlayerInputComponent);
 	PSPawnExtensionComponent->OnOwnerSetupPlayerInputComponent(PlayerInputComponent);
 }
