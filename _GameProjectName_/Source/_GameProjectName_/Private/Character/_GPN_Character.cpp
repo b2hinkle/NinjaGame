@@ -49,6 +49,11 @@ void A_GPN_Character::PostRegisterAllComponents()
 	// This is assuming that we are in first person.
 	for (const AActor* Attachment : AttachmentAttacherComponent->GetAttachments())
 	{
+		if (!IsValid(Attachment))
+		{
+			continue;
+		}
+
 		UASActorComponent_PortrayalAssignment* PortrayalAssignmentComponent = Attachment->FindComponentByClass<UASActorComponent_PortrayalAssignment>();
 		if (IsValid(PortrayalAssignmentComponent))
 		{
