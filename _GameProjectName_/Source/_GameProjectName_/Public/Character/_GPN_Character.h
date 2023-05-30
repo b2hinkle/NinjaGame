@@ -27,18 +27,18 @@ class A_GPN_Character : public AASSCharacter_Example
 	GENERATED_BODY()
 
 protected:
-	UPROPERTY(VisibleAnywhere, Category = "GameSetup")
+	UPROPERTY(VisibleAnywhere, Category="GameSetup")
 		TObjectPtr<UGSActorComponent_PawnExtension> GSPawnExtensionComponent;
-	UPROPERTY(VisibleAnywhere, Category = "InputSetup")
+	UPROPERTY(VisibleAnywhere, Category="InputSetup")
 		TObjectPtr<UISActorComponent_PawnExtension> ISPawnExtensionComponent;
-	UPROPERTY(VisibleAnywhere, Category = "PawnSetup")
+	UPROPERTY(VisibleAnywhere, Category="PawnSetup")
 		TObjectPtr<UPSActorComponent_PawnExtension> PSPawnExtensionComponent;
-	UPROPERTY(VisibleAnywhere, Category = "AnimationSetup")
+	UPROPERTY(VisibleAnywhere, Category="AnimationSetup")
 		TObjectPtr<UASActorComponent_SkinlessSkeletalMesh> SkinlessSkeletalMeshComponent;
-	UPROPERTY(VisibleAnywhere, Category = "AnimationSetup")
+	UPROPERTY(VisibleAnywhere, Category="AnimationSetup")
 		TObjectPtr<UASActorComponent_AttachmentAttacher> AttachmentAttacherComponent;
 
-	UPROPERTY(VisibleAnywhere, Category = "Camera")
+	UPROPERTY(VisibleAnywhere, Category="Camera")
 		TObjectPtr<UCameraComponent> CameraComponent;
 
 public:

@@ -11,7 +11,7 @@
 #include "ActorComponents/PSActorComponent_PawnExtension.h"
 #include "Camera/CameraComponent.h"
 #include "BlueprintFunctionLibraries/CSBlueprintFunctionLibrary_CameraComponentHelpers.h"
-#include "ActorComponents/ASActorComponent_PortrayalAssignment.h"
+#include "ActorComponents/ASActorComponent_PortrayalApplier.h"
 #include "Portrayals/ASPortrayalDefinition_ViewerList.h"
 
 
@@ -54,21 +54,21 @@ void A_GPN_Character::PostRegisterAllComponents()
 			continue;
 		}
 
-		UASActorComponent_PortrayalAssignment* PortrayalAssignmentComponent = Attachment->FindComponentByClass<UASActorComponent_PortrayalAssignment>();
-		if (IsValid(PortrayalAssignmentComponent))
+		UASActorComponent_PortrayalApplier* PortrayalApplierComponent = Attachment->FindComponentByClass<UASActorComponent_PortrayalApplier>();
+		if (IsValid(PortrayalApplierComponent))
 		{
-			UASPortrayalDefinition* PortrayalDefinition = PortrayalAssignmentComponent->GetInstancedPortrayalDefinition(_GPN_NativeGameplayTags::Portrayal_FirstPerson);
+			UASPortrayalDefinition* PortrayalDefinition = PortrayalApplierComponent->GetInstancedPortrayalDefinition(_GPN_NativeGameplayTags::Portrayal_FirstPerson);
 			UASPortrayalDefinition_ViewerList* FirstPersonPortrayalDefinitionInstance = Cast<UASPortrayalDefinition_ViewerList>(PortrayalDefinition);
 			if (IsValid(FirstPersonPortrayalDefinitionInstance))
 			{
-				PortrayalAssignmentComponent->UnapplyPortrayals();
+				PortrayalApplierComponent->UnapplyPortrayals();
 
 				if (IsValid(FirstPersonPortrayalDefinitionInstance))
 				{
 					FirstPersonPortrayalDefinitionInstance->ActorList.Add(this);
 				}
 
-				PortrayalAssignmentComponent->ApplyPortrayals();
+				PortrayalApplierComponent->ApplyPortrayals();
 			}
 		}
 	}
